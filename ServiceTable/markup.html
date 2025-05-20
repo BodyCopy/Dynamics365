@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="ServiceTableStyle.css">
+        <link rel="stylesheet" href="../fluent-CSS-variables.css">
+    </head>
+
+    <body>
+        <ul id="product-container">
+        </ul>
+    </body>
+    <script lang="js">
+        const testData = [
+            {
+                name: 'Community Referrals',
+                modalities: ['In person', 'Telephonic', 'Online']
+            },
+            {
+                name: 'Counselling',
+                modalities: ['In person', 'Telephonic']
+            },
+            {
+                name: 'Elder Care',
+                modalities: []
+            },
+            {
+                name: 'Finances',
+                modalities: ['In person', 'Telephonic', 'Online']
+            },
+        ]
+        const productContainer = document.querySelector('#product-container');
+
+        createProductList();
+
+        function createProductItem(product) {
+            const productItem = document.createElement('li');
+            productItem.setAttribute('class', 'product-item');
+
+            const productItemModalities = product.modalities;
+            productItem.innerHTML = `<p class="product-item-name">${product.name}</p>`;
+            if (product.modalities.length > 0) {
+                const modalityList = document.createElement('ul');
+                modalityList.setAttribute('class', 'product-item-list');
+
+                productItemModalities.forEach((modality) => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = modality;
+                    listItem.setAttribute('class', 'product-item-list-item');
+
+                    modalityList.appendChild(listItem);
+                })
+                productItem.appendChild(modalityList);
+            }
+            return productItem;
+        }
+
+        function createProductList() {
+            testData.forEach((item) => {
+                productContainer.appendChild(createProductItem(item));
+            })
+        }
+    </script>
+
+</html>
