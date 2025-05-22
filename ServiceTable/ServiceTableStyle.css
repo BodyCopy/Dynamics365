@@ -14,12 +14,23 @@ body {
   flex-direction: column;
   max-width: 800px;
   margin: 0 auto;
+  background-color: white;
 }
 
 .product-item {
-  background-color: white;
-  padding: 10px;
   border-block-end: 1px solid var(--ag-row-border-color);
+}
+.product-item summary {
+  padding: 10px;
+  background-color: white;
+}
+.product-item summary:hover {
+  transition: color 160ms ease-in;
+  background-color: rgb(251, 251, 251);
+}
+.product-item ul {
+  padding: 0px 10px 10px 10px;
+  margin-block-start: 8px;
 }
 
 .product-item:last-child {
@@ -28,8 +39,6 @@ body {
 
 .product-item-name {
   font-size: 14px;
-  font-weight: 600;
-  margin: 0 0 10px 0;
 }
 
 .product-item-list {
@@ -51,11 +60,6 @@ body {
   align-items: center;
 }
 
-.product-item:has(.product-item-name:last-child)::after {
-  content: "No modalities available";
-  display: block;
-  color: #605e5c;
-  font-size: 12px;
-  font-style: italic;
-  margin-top: 8px;
+details:not(:has(*:nth-child(2))) > summary::marker {
+  content: "";
 }/*# sourceMappingURL=ServiceTableStyle.css.map */

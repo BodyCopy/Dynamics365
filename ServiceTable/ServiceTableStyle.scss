@@ -16,23 +16,36 @@ body {
     flex-direction: column;
     max-width: 800px;
     margin: 0 auto;
+    background-color: white;
 }
 
 // Product item card
 .product-item {
-    background-color: white;
-    padding: 10px;
     border-block-end: 1px solid var(--ag-row-border-color);
+
+    & summary {
+        padding: 10px;
+        background-color: white;
+
+        &:hover {
+            transition: color 160ms ease-in;
+            background-color: rgb(251, 251, 251);
+        }
+    }
+
+    & ul {
+        padding: 0px 10px 10px 10px;
+        margin-block-start: 8px;
+    }
 }
-.product-item:last-child{
+
+.product-item:last-child {
     border-block-end: none;
 }
 
 // Product name
 .product-item-name {
     font-size: 14px;
-    font-weight: 600;
-    margin: 0 0 10px 0;
 }
 
 // Modality list container
@@ -56,19 +69,30 @@ body {
     align-items: center;
 }
 
-// Empty state for no modalities
-.product-item:has(.product-item-name:last-child) {
-
-    .product-item-name {
-        // color: #d13438;
+details:not(:has(*:nth-child(2))) {
+    &>summary {
+        // display: none;
+        &::marker {
+            content: '';
+        }
     }
 
-    &::after {
-        content: "No modalities available";
-        display: block;
-        color: #605e5c;
-        font-size: 12px;
-        font-style: italic;
-        margin-top: 8px;
-    }
+
 }
+
+// Empty state for no modalities
+// .product-item:has(.product-item-name:last-child) {
+
+//     .product-item-name {
+//         // color: #d13438;
+//     }
+
+//     &::after {
+//         content: "No modalities available";
+//         display: block;
+//         color: #605e5c;
+//         font-size: 12px;
+//         font-style: italic;
+//         margin-top: 8px;
+//     }
+// }

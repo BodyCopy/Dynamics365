@@ -41,7 +41,7 @@
             productItem.setAttribute('class', 'product-item');
 
             const productItemModalities = product.modalities;
-            productItem.innerHTML = `<p class="product-item-name">${product.name}</p>`;
+            productItem.innerHTML = `<details><summary class="product-item-name">${product.name}</summary></details>`;
             if (product.modalities.length > 0) {
                 const modalityList = document.createElement('ul');
                 modalityList.setAttribute('class', 'product-item-list');
@@ -53,7 +53,7 @@
 
                     modalityList.appendChild(listItem);
                 })
-                productItem.appendChild(modalityList);
+                productItem.childNodes[0].appendChild(modalityList);
             }
             return productItem;
         }
